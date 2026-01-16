@@ -2,6 +2,276 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   Organic Biophilic Design System
+   UI/UX Pro Max - Pilates AI
+   ============================================ */
+
+@layer base {
+  :root {
+    /* Organic Biophilic Color Variables */
+    --color-forest: #228B22;
+    --color-earth: #8B4513;
+    --color-sky: #87CEEB;
+    --color-sand: #F5F5DC;
+    --color-sand-light: #FDFBF7;
+
+    /* Typography */
+    --font-heading: 'Lora', Georgia, serif;
+    --font-body: 'Raleway', system-ui, sans-serif;
+
+    /* Organic Spacing */
+    --space-organic: 1.5rem;
+    --radius-organic: 1.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-sand-light);
+    color: #2d1606;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+@layer components {
+  /* Organic Card Style */
+  .card-organic {
+    background-color: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px -2px rgba(34, 139, 34, 0.1), 0 2px 8px -2px rgba(34, 139, 34, 0.06);
+    border: 1px solid #ede9d5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-organic:hover {
+    box-shadow: 0 14px 50px -6px rgba(34, 139, 34, 0.2), 0 6px 20px -6px rgba(34, 139, 34, 0.12);
+    transform: translateY(-2px);
+  }
+
+  /* Organic Button */
+  .btn-organic {
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    background-color: #228B22;
+    color: white;
+  }
+
+  .btn-organic:hover {
+    background-color: #1e7b1e;
+    box-shadow: 0 4px 20px -2px rgba(34, 139, 34, 0.1);
+  }
+
+  .btn-organic:active {
+    transform: scale(0.98);
+  }
+
+  .btn-organic:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #86efac;
+  }
+
+  .btn-organic-outline {
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    background-color: transparent;
+    border: 2px solid #228B22;
+    color: #1e7b1e;
+  }
+
+  .btn-organic-outline:hover {
+    background-color: #f0fdf4;
+    border-color: #1e7b1e;
+  }
+
+  .btn-organic-outline:active {
+    transform: scale(0.98);
+  }
+
+  /* Organic Input */
+  .input-organic {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 1.5rem;
+    border: 2px solid #e0d9c3;
+    background-color: white;
+    color: #44210a;
+    outline: none;
+    transition: all 0.3s;
+  }
+
+  .input-organic:focus {
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+  }
+
+  .input-organic::placeholder {
+    color: #c2b593;
+  }
+
+  /* Organic Badge */
+  .badge-organic {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #dcfce7;
+    color: #166534;
+  }
+
+  /* Theme Button Active State */
+  .btn-theme-active {
+    background-color: var(--color-forest);
+    color: white;
+    border-color: var(--color-forest);
+    box-shadow: 0 1px 3px rgba(34, 139, 34, 0.3);
+  }
+
+  .btn-theme-active:hover {
+    background-color: #1e7b1e;
+    border-color: #1e7b1e;
+  }
+
+  /* Theme Background Variations */
+  .bg-theme {
+    background-color: var(--color-forest);
+  }
+
+  .bg-theme-light {
+    background-color: rgba(34, 139, 34, 0.1);
+  }
+
+  .bg-theme-50 {
+    background-color: #f0fdf4;
+  }
+
+  .bg-theme-100 {
+    background-color: #dcfce7;
+  }
+
+  .text-theme {
+    color: var(--color-forest);
+  }
+
+  .text-theme-dark {
+    color: #166534;
+  }
+
+  .border-theme {
+    border-color: var(--color-forest);
+  }
+
+  .border-theme-light {
+    border-color: rgba(34, 139, 34, 0.2);
+  }
+
+  /* Category Filter Button */
+  .btn-filter-active {
+    background-color: var(--color-forest);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(34, 139, 34, 0.2);
+  }
+
+  .btn-filter-inactive {
+    background-color: white;
+    color: #5c2d0e;
+    border: 1px solid #e0d9c3;
+  }
+
+  .btn-filter-inactive:hover {
+    background-color: #FDFBF7;
+  }
+
+  /* Calendar Selected Date */
+  .calendar-selected {
+    background-color: var(--color-forest);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(34, 139, 34, 0.3);
+    transform: scale(1.1);
+  }
+
+  /* Floating Action Bar */
+  .floating-bar {
+    background-color: var(--color-forest);
+    color: white;
+  }
+
+  /* Tag/Badge Theme */
+  .tag-theme {
+    background-color: rgba(34, 139, 34, 0.1);
+    color: #166534;
+  }
+
+  /* Primary Action Button with Gradient */
+  .btn-primary-gradient {
+    background: linear-gradient(to right, #228B22, #1e7b1e);
+    color: white;
+    box-shadow: 0 4px 20px -2px rgba(34, 139, 34, 0.15);
+  }
+
+  .btn-primary-gradient:hover {
+    background: linear-gradient(to right, #1e7b1e, #166534);
+    box-shadow: 0 10px 40px -4px rgba(34, 139, 34, 0.2);
+  }
+
+  .btn-primary-gradient:active {
+    transform: scale(0.98);
+  }
+
+  /* Logo Gradient */
+  .logo-gradient {
+    background: linear-gradient(135deg, #228B22, #166534);
+  }
+
+  /* Card Gradient (for stats card) */
+  .card-gradient {
+    background: linear-gradient(135deg, #1e7b1e, #14532d);
+  }
+
+  /* Flowing Organic Shape Background */
+  .bg-organic-pattern {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(34, 139, 34, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(135, 206, 235, 0.05) 0%, transparent 50%);
+  }
+}
+
+@layer utilities {
+  /* Organic Gradient */
+  .gradient-organic {
+    background: linear-gradient(135deg, var(--color-forest) 0%, #2d8f4e 100%);
+  }
+
+  .gradient-sand {
+    background: linear-gradient(180deg, var(--color-sand-light) 0%, var(--color-sand) 100%);
+  }
+
+  /* Text Gradient */
+  .text-gradient-organic {
+    background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-earth) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
 /* 隱藏滾動條但保留功能 */
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -11,22 +281,80 @@
     scrollbar-width: none;
 }
 
-/* 自定義動畫 */
+/* 自定義動畫 - Organic Style */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes organicPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes organicFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 拖放樣式 */
+.animate-organic-pulse {
+  animation: organicPulse 3s ease-in-out infinite;
+}
+
+.animate-organic-float {
+  animation: organicFloat 4s ease-in-out infinite;
+}
+
+/* 拖放樣式 - Organic */
 .dragging {
   opacity: 0.5;
 }
 
 .drop-target {
-  border: 2px dashed #4f46e5;
-  background-color: rgba(79, 70, 229, 0.1);
+  border: 2px dashed var(--color-forest);
+  background-color: rgba(34, 139, 34, 0.08);
+  border-radius: var(--radius-organic);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(34, 139, 34, 0.2);
+  color: #14532d;
 }

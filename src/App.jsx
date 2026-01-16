@@ -68,19 +68,19 @@ const ExerciseDetailModal = ({ exercise, onClose, themeColor }) => {
   const rawData = exercise.rawData || {};
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl animate-fadeIn">
+    <div className="fixed inset-0 bg-earth-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-organic-lg animate-fadeIn border border-sand-200">
         <div className="p-6">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <span className={`inline-block px-2 py-1 bg-${themeColor}-100 text-${themeColor}-800 text-xs rounded-full mb-2 font-medium`}>
+              <span className={`inline-block px-3 py-1 bg-${themeColor}-100 text-${themeColor}-800 text-xs rounded-full mb-2 font-medium`}>
                 {exercise.category}
               </span>
-              <h3 className="text-2xl font-bold text-gray-800">{exercise.name}</h3>
-              <p className="text-sm text-gray-500 mt-1">編號: {exercise.id}</p>
+              <h3 className="text-2xl font-heading font-bold text-earth-800">{exercise.name}</h3>
+              <p className="text-sm text-earth-500 mt-1">編號: {exercise.id}</p>
             </div>
-            <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full">
-              <X size={24} className="text-gray-500" />
+            <button onClick={onClose} className="p-2 hover:bg-sand-100 rounded-xl transition-colors cursor-pointer">
+              <X size={24} className="text-earth-500" />
             </button>
           </div>
 
@@ -159,8 +159,8 @@ const ExerciseDetailModal = ({ exercise, onClose, themeColor }) => {
             )}
           </div>
         </div>
-        <div className="p-4 bg-gray-50 border-t text-center">
-          <button onClick={onClose} className={`w-full py-3 bg-${themeColor}-600 text-white rounded-xl font-medium hover:bg-${themeColor}-700 transition`}>
+        <div className="p-4 bg-sand-50 border-t border-sand-200 text-center rounded-b-3xl">
+          <button onClick={onClose} className="w-full py-3.5 btn-primary-gradient rounded-2xl font-medium transition-all duration-300 shadow-sm cursor-pointer">
             關閉
           </button>
         </div>
@@ -280,10 +280,10 @@ const CalendarView = ({ schedule, setSchedule, themeColor }) => {
             <div className="grid grid-cols-7 text-center py-4 px-2 overflow-x-auto scrollbar-hide touch-pan-x">
               {currentWeekDays.map((date, idx) => (
                 <div key={idx} className="flex flex-col items-center">
-                  <button onClick={() => selectDay(date)} className={`w-10 h-10 flex items-center justify-center rounded-full text-lg font-medium transition-all ${isSameDay(date, selectedDate) ? `bg-${themeColor}-600 text-white shadow-md scale-110` : isSameDay(date, today) ? `bg-gray-100 text-${themeColor}-600 font-bold` : 'text-gray-700 hover:bg-gray-50'}`}>
+                  <button onClick={() => selectDay(date)} className={`w-10 h-10 flex items-center justify-center rounded-full text-lg font-medium transition-all duration-300 cursor-pointer ${isSameDay(date, selectedDate) ? 'calendar-selected' : isSameDay(date, today) ? 'bg-sand-100 text-theme font-bold' : 'text-earth-700 hover:bg-sand-50'}`}>
                     {date.getDate()}
                   </button>
-                  {hasEvent(date) && <div className={`mt-1 w-1.5 h-1.5 rounded-full ${isSameDay(date, selectedDate) ? `bg-${themeColor}-600` : 'bg-gray-300'}`}></div>}
+                  {hasEvent(date) && <div className={`mt-1 w-1.5 h-1.5 rounded-full ${isSameDay(date, selectedDate) ? 'bg-theme' : 'bg-sand-400'}`}></div>}
                 </div>
               ))}
             </div>
@@ -349,9 +349,9 @@ const PlanCart = ({ cart, setCart, onSave, themeColor }) => {
   return (
     <>
       {!isOpen && (
-        <div className={`fixed bottom-20 left-4 right-4 lg:left-72 lg:right-8 bg-${themeColor}-600 text-white p-4 rounded-xl shadow-xl flex justify-between items-center z-40 animate-fadeIn cursor-pointer`} onClick={() => setIsOpen(true)}>
+        <div className="fixed bottom-20 left-4 right-4 lg:left-72 lg:right-8 floating-bar p-4 rounded-2xl shadow-organic-lg flex justify-between items-center z-40 animate-fadeIn cursor-pointer" onClick={() => setIsOpen(true)}>
           <div className="flex items-center">
-            <div className={`bg-white text-${themeColor}-600 w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3`}>{cart.length}</div>
+            <div className="bg-white text-theme w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3">{cart.length}</div>
             <span className="font-medium">已選擇動作 (手動排課)</span>
           </div>
           <div className="flex items-center"><span className="mr-2 text-sm">查看</span><ChevronRight size={18} /></div>
@@ -385,7 +385,7 @@ const PlanCart = ({ cart, setCart, onSave, themeColor }) => {
             <div className="p-4 border-t bg-gray-50 lg:rounded-b-2xl">
                <div className="flex space-x-3">
                  <button onClick={() => setCart([])} className="px-4 py-3 border border-gray-300 text-gray-600 rounded-xl hover:bg-white transition">清空</button>
-                 <button onClick={() => { onSave(cart); setIsOpen(false); setCart([]); }} className={`flex-1 py-3 bg-${themeColor}-600 text-white rounded-xl font-bold shadow hover:bg-${themeColor}-700 transition flex items-center justify-center`}>
+                 <button onClick={() => { onSave(cart); setIsOpen(false); setCart([]); }} className="flex-1 py-3 bg-theme text-white rounded-2xl font-bold shadow-organic hover:opacity-90 transition-all duration-300 flex items-center justify-center cursor-pointer">
                    <Save className="mr-2" size={18}/> 存入課表
                  </button>
                </div>
@@ -431,22 +431,22 @@ const LibraryView = ({ exercises, openDetail, addToCart, cart, themeColor }) => 
   return (
     <div className="p-4 max-w-6xl mx-auto pb-32">
        <div className="flex justify-between items-center mb-6">
-         <h2 className="text-2xl font-bold text-gray-800 flex items-center">
+         <h2 className="text-2xl font-heading font-bold text-earth-800 flex items-center">
           <Library className={`mr-2 text-${themeColor}-600`} /> 動作資料庫
         </h2>
-        <span className={`text-xs bg-${themeColor}-50 text-${themeColor}-600 px-3 py-1 rounded-full border border-${themeColor}-100`}>
+        <span className={`text-xs bg-${themeColor}-50 text-${themeColor}-700 px-3 py-1.5 rounded-full border border-${themeColor}-200 font-medium`}>
           共 {exercises.length} 個動作
         </span>
        </div>
 
-       {/* 搜尋框 */}
+       {/* 搜尋框 - Organic Input */}
        <div className="mb-4">
          <input
            type="text"
            placeholder="搜尋動作名稱或編號..."
            value={searchQuery}
            onChange={(e) => setSearchQuery(e.target.value)}
-           className={`w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-${themeColor}-500 focus:ring-2 focus:ring-${themeColor}-100 outline-none transition`}
+           className={`w-full px-5 py-3.5 rounded-2xl border-2 border-sand-300 bg-white focus:border-${themeColor}-500 focus:ring-2 focus:ring-${themeColor}-100 outline-none transition-all duration-300 placeholder:text-earth-400`}
          />
        </div>
 
@@ -456,10 +456,10 @@ const LibraryView = ({ exercises, openDetail, addToCart, cart, themeColor }) => 
           <button
             key={cat}
             onClick={() => setFilter(cat)}
-            className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors ${
+            className={`px-4 py-2.5 rounded-full whitespace-nowrap text-sm font-medium transition-all duration-300 cursor-pointer ${
               filter === cat
-                ? `bg-${themeColor}-600 text-white shadow-md`
-                : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
+                ? 'btn-filter-active'
+                : 'btn-filter-inactive'
             }`}
           >
             {cat === 'All' ? '全部器材' : cat}
@@ -488,19 +488,19 @@ const LibraryView = ({ exercises, openDetail, addToCart, cart, themeColor }) => 
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredExercises.map(ex => (
-          <div key={ex.id} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition group relative">
-            <div className="cursor-pointer" onClick={() => openDetail(ex)}>
-              <div className="flex justify-between items-start mb-2">
-                <span className={`text-xs font-bold text-${themeColor}-600 bg-${themeColor}-50 px-2 py-1 rounded-md`}>{ex.category}</span>
-                <span className={`text-xs px-2 py-1 rounded-full ${ex.level === 'Advanced' ? 'bg-red-100 text-red-600' : ex.level === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-600'}`}>
+          <div key={ex.id} className="bg-white p-5 rounded-2xl shadow-organic border border-sand-200 hover:shadow-organic-hover hover:border-sand-300 transition-all duration-300 group relative cursor-pointer">
+            <div onClick={() => openDetail(ex)}>
+              <div className="flex justify-between items-start mb-3">
+                <span className={`text-xs font-bold text-${themeColor}-700 bg-${themeColor}-50 px-2.5 py-1 rounded-lg`}>{ex.category}</span>
+                <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${ex.level === 'Advanced' ? 'bg-red-100 text-red-700' : ex.level === 'Intermediate' ? 'bg-amber-100 text-amber-700' : 'bg-forest-100 text-forest-700'}`}>
                   {ex.level === 'Beginner' ? '初階' : ex.level === 'Intermediate' ? '中階' : '高階'}
                 </span>
               </div>
-              <h3 className="font-bold text-gray-800 text-lg mb-1">{ex.name}</h3>
-              <p className="text-gray-400 text-xs mb-2">{ex.id}</p>
-              <p className="text-gray-500 text-sm line-clamp-2">{ex.details.goals}</p>
+              <h3 className="font-heading font-bold text-earth-800 text-lg mb-1">{ex.name}</h3>
+              <p className="text-earth-400 text-xs mb-2">{ex.id}</p>
+              <p className="text-earth-600 text-sm line-clamp-2">{ex.details.goals}</p>
             </div>
-            <button onClick={(e) => { e.stopPropagation(); addToCart(ex); }} className={`absolute bottom-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-${themeColor}-600 hover:text-white transition shadow-sm active:scale-90`}>
+            <button onClick={(e) => { e.stopPropagation(); addToCart(ex); }} className={`absolute bottom-4 right-4 w-10 h-10 bg-sand-100 rounded-xl flex items-center justify-center text-earth-600 hover:bg-${themeColor}-600 hover:text-white transition-all duration-300 shadow-sm active:scale-90 cursor-pointer`}>
               <Plus size={20} />
             </button>
           </div>
@@ -523,7 +523,7 @@ export default function App() {
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [schedule, setSchedule] = useState([]);
   const [cart, setCart] = useState([]);
-  const [themeColor, setThemeColor] = useState('stone');
+  const [themeColor, setThemeColor] = useState('forest');
 
   // 載入動作資料庫
   const [exerciseDB, setExerciseDB] = useState([]);
@@ -619,13 +619,15 @@ export default function App() {
   const toggleTarget = (targetId) => setGenTargets(prev => prev.includes(targetId) ? prev.filter(t => t !== targetId) : [...prev, targetId]);
   const toggleContra = (c) => setGenContra(prev => prev.includes(c) ? prev.filter(item => item !== c) : [...prev, c]);
 
-  // Loading 畫面
+  // Loading 畫面 - Organic Style
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-sand-50 bg-organic-pattern flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-stone-600 mx-auto mb-4" />
-          <p className="text-gray-600">載入動作資料庫中...</p>
+          <div className="w-16 h-16 rounded-full bg-forest-100 flex items-center justify-center mx-auto mb-4 animate-organic-pulse">
+            <Loader2 className="w-8 h-8 animate-spin text-forest-600" />
+          </div>
+          <p className="text-earth-700 font-body">載入動作資料庫中...</p>
         </div>
       </div>
     );
@@ -637,8 +639,8 @@ export default function App() {
         return (
           <div className="p-4 max-w-4xl mx-auto pb-24 animate-fadeIn">
             <header className="mb-8 mt-4">
-              <h1 className="text-3xl font-bold text-gray-800">早安，教練</h1>
-              <p className="text-gray-500">準備好開始今天的課程了嗎？</p>
+              <h1 className="text-3xl font-heading font-bold text-earth-800">早安，教練</h1>
+              <p className="text-earth-600">準備好開始今天的課程了嗎？</p>
             </header>
 
             {/* 資料庫統計 */}
@@ -652,10 +654,10 @@ export default function App() {
               </div>
             </div>
 
-            {/* 教室選擇 */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
+            {/* 教室選擇 - Organic Card */}
+            <div className="bg-white rounded-2xl p-6 shadow-organic border border-sand-200 mb-6 hover:shadow-organic-hover transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-gray-800">選擇教室</h2>
+                <h2 className="text-xl font-heading font-bold text-earth-800">選擇教室</h2>
                 <select
                   value={studio}
                   onChange={(e) => setStudio(e.target.value)}
@@ -727,12 +729,12 @@ export default function App() {
       case 'settings':
         return (
           <div className="p-4 max-w-4xl mx-auto pb-24 animate-fadeIn">
-             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+             <h2 className="text-2xl font-heading font-bold text-earth-800 mb-6 flex items-center">
               <UserCog className={`mr-2 text-${themeColor}-600`} /> 設定與個人檔案
             </h2>
 
             {/* 教學時數存摺 */}
-            <div className={`bg-gradient-to-br from-${themeColor}-600 to-${themeColor}-800 rounded-2xl p-6 text-white shadow-lg mb-6 relative overflow-hidden`}>
+            <div className="card-gradient rounded-2xl p-6 text-white shadow-lg mb-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-32 bg-white opacity-5 rounded-full transform translate-x-10 -translate-y-10"></div>
 
               <div className="flex justify-between items-start mb-4 relative z-10">
@@ -775,9 +777,9 @@ export default function App() {
               </button>
             </div>
 
-            {/* 主題選擇器 */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center">
+            {/* 主題選擇器 - Organic Style */}
+            <div className="bg-white rounded-2xl p-6 shadow-organic border border-sand-200 mb-6">
+              <h2 className="text-sm font-bold text-earth-600 uppercase tracking-wider mb-4 flex items-center">
                 <Palette size={16} className="mr-2"/> 自訂主題風格
               </h2>
               <div className="flex flex-wrap gap-3">
@@ -785,10 +787,10 @@ export default function App() {
                   <button
                     key={key}
                     onClick={() => setThemeColor(key)}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl border transition ${themeColor === key ? `border-${theme.color}-500 bg-${theme.color}-50 ring-1 ring-${theme.color}-500` : 'border-gray-200 hover:bg-gray-50'}`}
+                    className={`flex items-center space-x-2 px-4 py-2.5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${themeColor === key ? `border-${theme.color}-500 bg-${theme.color}-50 shadow-sm` : 'border-sand-200 hover:bg-sand-50 hover:border-sand-300'}`}
                   >
-                    <div className={`w-4 h-4 rounded-full ${theme.class}`}></div>
-                    <span className="text-sm font-medium text-gray-700">{theme.name}</span>
+                    <div className={`w-5 h-5 rounded-full ${theme.class} shadow-sm`}></div>
+                    <span className="text-sm font-medium text-earth-700">{theme.name}</span>
                   </button>
                 ))}
               </div>
@@ -828,17 +830,17 @@ export default function App() {
       case 'auto':
         return (
           <div className="p-4 max-w-4xl mx-auto pb-24 animate-fadeIn">
-             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+             <h2 className="text-2xl font-heading font-bold text-earth-800 mb-6 flex items-center">
               <Dices className={`mr-2 text-${themeColor}-600`} /> 自動排課抽卡
             </h2>
 
             {!genResult ? (
               <div className="space-y-6">
-                <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-800 mb-3 flex items-center"><Filter size={18} className="mr-2"/> 難度選擇 (可複選)</h3>
+                <div className="bg-white p-5 rounded-2xl shadow-organic border border-sand-200">
+                  <h3 className="font-bold text-earth-800 mb-3 flex items-center"><Filter size={18} className="mr-2"/> 難度選擇 (可複選)</h3>
                   <div className="grid grid-cols-3 gap-2">
                     {['Beginner', 'Intermediate', 'Advanced'].map(lvl => (
-                      <button key={lvl} onClick={() => toggleDifficulty(lvl)} className={`py-2 px-3 rounded-lg text-sm font-medium border transition ${genDifficulty.includes(lvl) ? `bg-${themeColor}-600 text-white border-${themeColor}-600 shadow-sm` : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}>
+                      <button key={lvl} onClick={() => toggleDifficulty(lvl)} className={`py-2 px-3 rounded-2xl text-sm font-medium border-2 transition-all duration-300 cursor-pointer ${genDifficulty.includes(lvl) ? 'btn-theme-active' : 'bg-white text-earth-600 border-sand-300 hover:bg-sand-50 hover:border-sand-400'}`}>
                         {lvl === 'Beginner' ? '初階' : lvl === 'Intermediate' ? '中階' : '高階'}
                       </button>
                     ))}
@@ -860,7 +862,7 @@ export default function App() {
                   <h3 className="font-bold text-gray-800 mb-3 flex items-center"><Settings size={18} className="mr-2"/> 可用器材 (複選)</h3>
                   <div className="flex flex-wrap gap-2">
                     {EQUIPMENT_LIST.map(eq => (
-                      <button key={eq} onClick={() => toggleEquipment(eq)} className={`py-2 px-3 rounded-lg text-sm transition ${genEquipment.includes(eq) ? `bg-${themeColor}-100 text-${themeColor}-800 border-${themeColor}-200 border` : 'bg-gray-50 text-gray-600 border-transparent'}`}>
+                      <button key={eq} onClick={() => toggleEquipment(eq)} className={`py-2 px-3 rounded-2xl text-sm transition-all duration-300 cursor-pointer ${genEquipment.includes(eq) ? 'tag-theme border-2 border-forest-200' : 'bg-sand-100 text-earth-600 border-2 border-transparent hover:bg-sand-200'}`}>
                         {eq}
                       </button>
                     ))}
@@ -880,7 +882,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <button onClick={generatePlan} className={`w-full py-4 bg-${themeColor}-600 text-white rounded-xl text-lg font-bold shadow-lg hover:bg-${themeColor}-700 active:scale-95 transition flex items-center justify-center`}>
+                <button onClick={generatePlan} className="w-full py-4 btn-primary-gradient rounded-2xl text-lg font-bold transition-all duration-300 flex items-center justify-center cursor-pointer">
                   <Dices className="mr-2" /> 開始抽卡 (生成 10 式)
                 </button>
               </div>
@@ -911,7 +913,7 @@ export default function App() {
                   </div>
                 )}
                 {genResult.length > 0 && (
-                   <button onClick={() => addToSchedule(genResult, `AI 課表 (${genResult.length}式)`)} className={`w-full mt-6 py-3 bg-${themeColor}-600 text-white rounded-xl font-bold shadow hover:bg-${themeColor}-700 flex items-center justify-center`}>
+                   <button onClick={() => addToSchedule(genResult, `AI 課表 (${genResult.length}式)`)} className="w-full mt-6 py-3.5 bg-theme text-white rounded-2xl font-bold shadow-organic hover:opacity-90 transition-all duration-300 flex items-center justify-center cursor-pointer">
                     <CalendarIcon className="mr-2" size={18} /> 排入課程日曆
                   </button>
                 )}
@@ -942,22 +944,22 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-gray-50 text-gray-900 font-sans selection:bg-${themeColor}-100`}>
-      {/* Mobile Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-30 px-4 py-3 flex justify-between items-center lg:hidden">
-        <h1 className={`font-bold text-${themeColor}-700 text-lg flex items-center`}>
-          <div className={`w-8 h-8 bg-${themeColor}-600 rounded-lg mr-2 flex items-center justify-center text-white font-serif italic`}>P</div>
+    <div className={`min-h-screen bg-sand-50 bg-organic-pattern text-earth-900 font-body selection:bg-${themeColor}-100`}>
+      {/* Mobile Header - Organic Style */}
+      <div className="bg-white/80 backdrop-blur-md shadow-organic sticky top-0 z-30 px-4 py-3 flex justify-between items-center lg:hidden border-b border-sand-200">
+        <h1 className={`font-heading font-bold text-${themeColor}-700 text-lg flex items-center`}>
+          <div className="w-8 h-8 logo-gradient rounded-xl mr-2 flex items-center justify-center text-white font-heading italic shadow-sm">P</div>
           Pilates AI
         </h1>
-        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><User size={18} className="text-gray-600" /></div>
+        <div className="w-8 h-8 bg-sand-100 rounded-full flex items-center justify-center"><User size={18} className="text-earth-600" /></div>
       </div>
 
       <main className="lg:pl-64 min-h-screen">
-        {/* Desktop Sidebar */}
-        <aside className="fixed left-0 top-0 h-full w-64 bg-white border-r border-gray-200 hidden lg:flex flex-col z-40">
+        {/* Desktop Sidebar - Organic Style */}
+        <aside className="fixed left-0 top-0 h-full w-64 bg-white/90 backdrop-blur-md border-r border-sand-200 hidden lg:flex flex-col z-40">
           <div className="p-6">
-             <h1 className={`font-bold text-${themeColor}-700 text-2xl flex items-center mb-8`}>
-              <div className={`w-10 h-10 bg-${themeColor}-600 rounded-lg mr-3 flex items-center justify-center text-white font-serif italic text-xl`}>P</div>
+             <h1 className={`font-heading font-bold text-${themeColor}-700 text-2xl flex items-center mb-8`}>
+              <div className="w-10 h-10 logo-gradient rounded-xl mr-3 flex items-center justify-center text-white font-heading italic text-xl shadow-organic">P</div>
               Pilates AI
             </h1>
             <nav className="space-y-2">
@@ -968,25 +970,25 @@ export default function App() {
                 { id: 'calendar', icon: CalendarIcon, label: '課程日曆' },
                 { id: 'settings', icon: Settings, label: '設定' },
               ].map(item => (
-                <button key={item.id} onClick={() => setCurrentTab(item.id)} className={`w-full flex items-center px-4 py-3 rounded-xl transition font-medium ${currentTab === item.id ? `bg-${themeColor}-50 text-${themeColor}-700` : 'text-gray-600 hover:bg-gray-50'}`}>
+                <button key={item.id} onClick={() => setCurrentTab(item.id)} className={`w-full flex items-center px-4 py-3 rounded-2xl transition-all duration-300 font-medium cursor-pointer ${currentTab === item.id ? `bg-${themeColor}-50 text-${themeColor}-700 shadow-sm` : 'text-earth-600 hover:bg-sand-100'}`}>
                   <item.icon size={20} className="mr-3" />
                   {item.label}
                 </button>
               ))}
             </nav>
           </div>
-          <div className="mt-auto p-6 border-t border-gray-100">
+          <div className="mt-auto p-6 border-t border-sand-200">
             <div className="flex items-center">
-              <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold mr-3">C</div>
-              <div><p className="text-sm font-bold text-gray-800">Coach Demo</p><p className="text-xs text-gray-500">Pro Plan</p></div>
+              <div className="w-10 h-10 rounded-full bg-forest-100 flex items-center justify-center text-forest-700 font-bold mr-3">C</div>
+              <div><p className="text-sm font-bold text-earth-800">Coach Demo</p><p className="text-xs text-earth-500">Pro Plan</p></div>
             </div>
           </div>
         </aside>
         {renderContent()}
       </main>
 
-      {/* Mobile Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-40 lg:hidden pb-safe">
+      {/* Mobile Bottom Navigation - Organic Style */}
+      <nav className="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-sand-200 z-40 lg:hidden pb-safe">
         <div className="flex justify-around items-center h-16">
           {[
             { id: 'home', icon: Home, label: '首頁' },
@@ -995,7 +997,7 @@ export default function App() {
             { id: 'calendar', icon: CalendarIcon, label: '日曆' },
             { id: 'settings', icon: Settings, label: '設定' },
           ].map(item => (
-            <button key={item.id} onClick={() => setCurrentTab(item.id)} className={`flex flex-col items-center justify-center w-full h-full transition ${currentTab === item.id ? `text-${themeColor}-600` : 'text-gray-400'}`}>
+            <button key={item.id} onClick={() => setCurrentTab(item.id)} className={`flex flex-col items-center justify-center w-full h-full transition-all duration-300 cursor-pointer ${currentTab === item.id ? `text-${themeColor}-600` : 'text-earth-400 hover:text-earth-600'}`}>
               <item.icon size={currentTab === item.id ? 24 : 20} strokeWidth={currentTab === item.id ? 2.5 : 2} />
               <span className="text-[10px] mt-1 font-medium">{item.label}</span>
             </button>
