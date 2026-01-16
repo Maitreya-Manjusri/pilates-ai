@@ -244,13 +244,15 @@ export const BODY_TARGETS = [
   { id: 'Full Body', label: '全身 (Full)' }
 ];
 
-// 主題色設定
+// 主題色設定 - Organic Biophilic Design System
 export const THEMES = {
-  stone: { name: '大地暖灰 (Stone)', color: 'stone', class: 'bg-stone-600' },
-  slate: { name: '莫蘭迪黑 (Slate)', color: 'slate', class: 'bg-slate-700' },
-  rose:  { name: '乾燥玫瑰 (Rose)',  color: 'rose',  class: 'bg-rose-500' },
-  teal:  { name: '鼠尾草綠 (Teal)',  color: 'teal',  class: 'bg-teal-600' },
-  indigo:{ name: '皇家深藍 (Indigo)',color: 'indigo',class: 'bg-indigo-600' }
+  forest: { name: '森林綠 (Forest)', color: 'forest', class: 'bg-forest-500' },
+  earth:  { name: '大地棕 (Earth)',  color: 'earth',  class: 'bg-earth-500' },
+  stone:  { name: '大地暖灰 (Stone)', color: 'stone', class: 'bg-stone-600' },
+  teal:   { name: '鼠尾草綠 (Teal)',  color: 'teal',  class: 'bg-teal-600' },
+  slate:  { name: '莫蘭迪黑 (Slate)', color: 'slate', class: 'bg-slate-700' },
+  rose:   { name: '乾燥玫瑰 (Rose)',  color: 'rose',  class: 'bg-rose-500' },
+  indigo: { name: '皇家深藍 (Indigo)',color: 'indigo',class: 'bg-indigo-600' }
 };
 
 export default loadAllExercises;
